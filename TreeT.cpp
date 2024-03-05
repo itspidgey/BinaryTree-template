@@ -113,12 +113,22 @@ int TreeT<T>::Size() {
 
 template<class T>
 void TreeT<T>::ResetIterator(Order traverseOrder) {
-
+    if (traverseOrder == IN_ORDER){
+        PlaceInOrder(root);
+    }
+    else if (traverseOrder == PRE_ORDER){
+        PlacePreOrder(root);
+    }
+    else if (traverseOrder == POST_ORDER){
+        PlacePostOrder(root);
+    }
 }
 
 template<class T>
 T TreeT<T>::GetNextItem() {
-    return nullptr;
+    T nextItem = iterQue.front();
+    iterQue.pop();
+    return nextItem;
 }
 
 template<class T>
@@ -148,16 +158,35 @@ void TreeT<T>::CopyHelper(TreeT::Node *&thisTree, TreeT::Node *otherTree) {
 
 template<class T>
 void TreeT<T>::PlacePreOrder(TreeT::Node *node) {
+    if (node == nullptr){
+        return;
+    }
 
+    iterQue.push(node->value);
+    PlacePreOrder(node->left);
+    PlacePreOrder(node->right);
 }
 
 template<class T>
 void TreeT<T>::PlacePostOrder(TreeT::Node *node) {
+    if (node == nullptr){
+        return;
+    }
 
+    PlacePostOrder(node->left);
+    PlacePostOrder(node->right);
+    iterQue.push(node->value);
 }
 
 template<class T>
 void TreeT<T>::PlaceInOrder(TreeT::Node *node) {
+    if (node == nullptr){
+        return;
+    }
 
+    PlaceInOrder(node->left);
+    iterQue.push(node->value);
+    PlaceInOrder(node->right);
+    iterQue.push(node->value);
 }
 
