@@ -17,8 +17,11 @@ template<class T>
 class TreeT {
 public:
     TreeT();
+    //Copy Constructor
+    TreeT(const TreeT& otherTree);
     ~TreeT();
 
+    //= overload
     TreeT& operator=(const TreeT& otherTree);
 
     void Add(T value);       // Add value to the tree
@@ -49,6 +52,7 @@ private:
     void DeleteNode(Node*& subtree);
     void GetPredecessor(Node* curr, T& value);
 
+    void CopyOther(const TreeT& otherTree);
     void CopyHelper(Node*& thisTree, Node* otherTree);
 
     // Used for iterator
@@ -57,6 +61,7 @@ private:
     void PlacePostOrder(Node* node);
     void PlaceInOrder(Node* node);
 };
+
 
 
 #include "TreeT.cpp"
