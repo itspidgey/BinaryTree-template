@@ -18,7 +18,7 @@ TreeT<T>::TreeT(const TreeT &otherTree) {
 }
 
 template<class T>
-TreeT &TreeT<T>::operator=(const TreeT &otherTree) {
+TreeT<T> &TreeT<T>::operator=(const TreeT &otherTree) {
 
     if (this != &otherTree){
         DestroyTree(root);
