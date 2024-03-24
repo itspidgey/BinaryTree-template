@@ -26,6 +26,7 @@ public:
 
     void Add(T value);       // Add value to the tree
     void Remove(T value);    // Remove value from the tree
+    void PrintTree(ostream& outFile); // Prints tree in order.
     bool Contains(T value);  // Determines if value is in the tree
 
     int Size();     // Number of values in the tree
@@ -54,6 +55,7 @@ private:
 
     void CopyOther(const TreeT& otherTree);
     void CopyHelper(Node*& thisTree, Node* otherTree);
+    void PrintHelper(Node* tree, ostream& outFile);
 
     // Used for iterator
     queue<T> iterQue;     // queue used for the iterator
