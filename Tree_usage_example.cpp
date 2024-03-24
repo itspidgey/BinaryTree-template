@@ -29,11 +29,7 @@ int main(void) {
 
     tree->Remove(2);
 
-    tree->ResetIterator(IN_ORDER);
-    for (int i = 0; i < tree->Size(); i++) {
-        cout << tree->GetNextItem() << " ";
-    }
-    cout << endl;
+    tree->PrintTree(cout);
 
     delete tree;
 
